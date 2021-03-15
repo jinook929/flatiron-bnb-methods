@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<ul>
+  <strong>Name:</strong>
+  <%= @city.name %>
+</ul>
+
+<ul>
+  <% @listings.each do |listing| %>
+    <li><%= listing.title %></li>
+  <% end %>
+</ul>
+
+<h3>Openings Check for <%= @city.name %></h3>
+<%= form_tag "#{@city.id}/openings", method: :get do %>
+  <%= label_tag "Check-In Date" %><br>
+  <%= text_field_tag :checkin, "", placeholder: "e.g. 2014-05-01" %><br>
+  <%= label_tag "Check-Out Date" %><br>
+  <%= text_field_tag :checkout, "", placeholder: "e.g. 2014-05-05" %><br>
+  <%= submit_tag "Check Openings" %><br>
+<% end %>
+
+<%= link_to 'Edit', edit_city_path(@city) %> |
+<%= link_to 'Back', cities_path %>

@@ -1,0 +1,17 @@
+<h1>Current Openings in <%= @city.name %></h1>
+
+<% @openings.each do |opening| %>
+  <h3><%= opening.title %></h3>
+  <p><%= opening.listing_type %></p>
+  <P><%= opening.neighborhood.name %></p>
+  <p><%= opening.price %></p>
+  <p>Booked on : 
+  <ul>
+    <% opening.reservations.each do |reservation| %>
+      <li><%= reservation.checkin %> ~ <%= reservation.checkout %></li>
+    <% end %>
+  </ul>
+  <hr>
+<% end %>
+
+<%= link_to "Back to City", @city %>

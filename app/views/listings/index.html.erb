@@ -1,0 +1,42 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listings</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Address</th>
+      <th>Listing type</th>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Price</th>
+      <th>Rating</th>
+      <th>Neighborhood</th>
+      <th>Host</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @listings.each do |listing| %>
+      <tr>
+        <td><%= listing.address %></td>
+        <td><%= listing.listing_type %></td>
+        <td><%= listing.title %></td>
+        <td><%= listing.description %></td>
+        <td><%= listing.price %></td>
+        <td><%= listing.average_review_rating %></td>
+        <td><%= listing.neighborhood.name %></td>
+        <td><%= listing.host.name %></td>
+        <td><%= link_to 'Show', listing %></td>
+        <td><%= link_to 'Edit', edit_listing_path(listing) %></td>
+        <td><%= button_to 'Destroy', listing, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Listing', new_listing_path %>
+<%= link_to 'Back to Home', "/" %>
